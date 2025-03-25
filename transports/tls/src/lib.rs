@@ -45,7 +45,7 @@ pub fn make_client_config(
 ) -> Result<rustls::ClientConfig, certificate::GenError> {
     let (certificate, private_key) = certificate::generate(keypair)?;
 
-    let mut provider = rustls::crypto::ring::default_provider();
+    let mut provider = rustls::crypto::aws_lc_rs::default_provider();
     provider.cipher_suites = verifier::CIPHERSUITES.to_vec();
 
     let cert_resolver = Arc::new(
@@ -72,7 +72,7 @@ pub fn make_server_config(
 ) -> Result<rustls::ServerConfig, certificate::GenError> {
     let (certificate, private_key) = certificate::generate(keypair)?;
 
-    let mut provider = rustls::crypto::ring::default_provider();
+    let mut provider = rustls::crypto::aws_lc_rs::default_provider();
     provider.cipher_suites = verifier::CIPHERSUITES.to_vec();
 
     let cert_resolver = Arc::new(

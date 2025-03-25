@@ -78,7 +78,7 @@ impl Config {
 
     /// Create a client-only configuration.
     pub fn client() -> Self {
-        let provider = rustls::crypto::ring::default_provider();
+        let provider = rustls::crypto::aws_lc_rs::default_provider();
         let client = rustls::ClientConfig::builder_with_provider(provider.into())
             .with_safe_default_protocol_versions()
             .unwrap()

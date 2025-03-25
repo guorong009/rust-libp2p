@@ -11,7 +11,7 @@ keywords = ["peer-to-peer", "libp2p", "networking"]
 categories = ["network-programming", "asynchronous"]
 
 [dependencies]
-futures-rustls = { workspace = true, features = ["ring"] }
+futures-rustls = { workspace = true, features = ["aws-lc-rs"] }
 either = "1.12.0"
 futures = { workspace = true }
 libp2p-core = { workspace = true }
