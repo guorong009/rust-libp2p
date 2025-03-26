@@ -125,7 +125,7 @@ impl Builder {
         I: IntoIterator<Item = Certificate>,
     {
         let certs = certs.into_iter().map(|c| c.0).collect();
-        let provider = rustls::crypto::ring::default_provider();
+        let provider = rustls::crypto::aws_lc_rs::default_provider();
         let server = rustls::ServerConfig::builder_with_provider(provider.into())
             .with_safe_default_protocol_versions()
             .unwrap()
@@ -146,7 +146,7 @@ impl Builder {
 
     /// Finish configuration.
     pub fn finish(self) -> Config {
-        let provider = rustls::crypto::ring::default_provider();
+        let provider = rustls::crypto::aws_lc_rs::default_provider();
         let client = rustls::ClientConfig::builder_with_provider(provider.into())
             .with_safe_default_protocol_versions()
             .unwrap()
